@@ -11,15 +11,41 @@ export default {
         };
     },
     created() {
-        axios.get("http://127.0.0.1:8000/api/projects").then((res) => {
-            console.log(res.data.results.data);
-            this.projects = res.data.results.data;
-            this.currentPage = res.data.results.data.current_page;
-            this.lastPage = res.data.results.last_page;
-        });
+        // axios.get("http://127.0.0.1:8000/api/projects").then((res) => {
+        //     console.log(res.data.results.data);
+        //     this.projects = res.data.results.data;
+        //     this.currentPage = res.data.results.data.current_page;
+        //     this.lastPage = res.data.results.last_page;
+        // });
+        this.getProjects(this.currentPage);
     },
     methods: {
-        getProjects(page) {},
+        getProjects(page) {
+            axios
+                .get("http://127.0.0.1:8000/api/projects", {
+                    params: {
+                        page: page,
+                    },
+                })
+                .then((res) => {
+                    console.log(res.data);
+                    this.projects = res.data.results.data;
+                    this.currentPage = res.data.results.current_page;
+                    this.lastPage = res.data.results.last_page;
+                });
+        },
+        prevPage() {
+            console.log(this.currentPage);
+            if (this.currentPage > 1) {
+                this.getProjects(this.currentPage - 1);
+            }
+        },
+        nextPage() {
+            console.log(this.currentPage);
+            if (this.currentPage < this.lastPage) {
+                this.getProjects(this.currentPage + 1);
+            }
+        },
     },
     components: {
         ProjectCard,
@@ -39,11 +65,15 @@ export default {
                 />
             </div>
             <div class="row">
-                <div class="col-6">
-                    <button class="btn btn-primary">Prev</button>
+                <div class="col-6 text-center">
+                    <button @click="prevPage" class="btn btn-primary">
+                        Prev
+                    </button>
                 </div>
-                <div class="col-6">
-                    <button class="btn btn-primary">Next</button>
+                <div class="col-6 text-center">
+                    <button @click="nextPage" class="btn btn-primary">
+                        Next
+                    </button>
                 </div>
             </div>
         </div>
