@@ -1,21 +1,16 @@
 <script>
 export default {
     data() {
-        return {
-
-        };
+        return {};
     },
-    methods: {
-
-    }
-}
+    methods: {},
+};
 </script>
 
 <template>
     <header>
-        HEADER
+        <h1 class="text-center mb-4">Tutti i project</h1>
     </header>
 </template>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>
