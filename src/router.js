@@ -13,16 +13,16 @@ const router = createRouter({
             component: IndexPage,
         },
         {
-            path: "/blog",
+            path: "/project",
             name: "projects.index",
             component: ProjectPage,
         },
         {
-            path: '/blog/:slug',
-            name: 'projects.show',
-            component: SingleProject
-        }    
+            path: "/project/:slug",
+            name: "projects.show",
+            component: SingleProject,
+        },
     ],
 });
 
-export { router } ; 
+export { router };

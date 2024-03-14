@@ -46,7 +46,7 @@ export default {
                 <div class="card-body">
                     <h5>Id: {{ project.id }}</h5>
                     <h5 class="card-title">Titolo:{{ project.title }}</h5>
-                    <h6>Type id: {{ project.type_id }}</h6>
+                    <h6>Type: {{ project.type.title }}</h6>
 
                     <p>Slug: {{ project.slug }}</p>
                     <span
