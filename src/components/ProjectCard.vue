@@ -25,13 +25,25 @@ export default {
                 <h5 class="card-title">{{ project.title }}</h5>
                 <h6>{{ project.type.title }}</h6>
                 <!-- <h6>{{ project.technologies.title }}</h6> -->
-                <span v-for="technologie in project.technologies"
-                    :kei="technologie.id"
+                <span
+                    v-for="technologie in project.technologies"
+                    :key="technologie.id"
                     class="ms-3"
                 >
                     {{ technologie.title }}
                 </span>
                 <p class="card-text">{{ project.content }}.</p>
+            </div>
+            <div>
+                <router-link
+                    :to="{
+                        name: 'projects.show',
+                        params: { slug: project.slug },
+                    }"
+                    class="btn btn-primary"
+                    >
+                    Vedi post completo
+                </router-link>
             </div>
         </div>
     </div>
