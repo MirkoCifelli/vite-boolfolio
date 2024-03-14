@@ -44,18 +44,19 @@ export default {
                     />
                 </div>
                 <div class="card-body">
-                    <h5>{{ project.id }}</h5>
-                    <h5 class="card-title">{{ project.title }}</h5>
-                    <!-- <h6>{{ project.type.title }}</h6> -->
-                    <!-- <h6>{{ project.technologies.title }}</h6> -->
+                    <h5>Id: {{ project.id }}</h5>
+                    <h5 class="card-title">Titolo:{{ project.title }}</h5>
+                    <h6>Type id: {{ project.type_id }}</h6>
+
+                    <p>Slug: {{ project.slug }}</p>
                     <span
                         v-for="technologie in project.technologies"
                         :key="technologie.id"
                         class="ms-3"
                     >
-                        {{ technologie.title }}
+                        Technologie: {{ technologie.title }}
                     </span>
-                    <p class="card-text">{{ project.content }}.</p>
+                    <p class="card-text">Contenuto: {{ project.content }}.</p>
                 </div>
             </div>
         </div>
