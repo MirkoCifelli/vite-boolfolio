@@ -30,6 +30,15 @@ export default {
                                 Projects
                             </router-link>
                         </li>
+
+                        <li>
+                            <router-link
+                                :to="{ name: 'contact' }"
+                                class="classe_css"
+                            >
+                                contact
+                            </router-link>
+                        </li>
                     </ul>
                 </div>
             </div>
