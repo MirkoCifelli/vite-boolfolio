@@ -12,20 +12,39 @@ export default {
     },
     methods: {
         sendMessage() {
+            
             if (
                 this.name != null &&
                 this.name != "" &&
-                this.name.lenght <= 64 &&
+                this.name.length <= 64 &&
                 this.email != null &&
                 this.email != "" &&
-                this.email.lenght <= 255 &&
+                this.email.length <= 255 &&
                 this.message != null &&
                 this.message != "" &&
-                this.message.lenght <= 2024 &&
+                this.message.length <= 2024 &&
                 this.accepted
             ) {
-                //  axios
+                axios
+                    .post("http://127.0.0.1:8000/api/contacts", {
+                        name: this.name,
+                        email: this.email,
+                        message: this.message,
+                        accepted: this.accepted,
+                    })
+                    .then((res) => {
+                        console.log(res.data);
+                        //     if(res.data.success){
+                        //         this.messageSent = true
+                        //     }
+                    })
+                    .catch((err) => {
+                        alert("Errore! Chiamata in errore.");
+                    });
             }
+            // else{
+            //     alert('Errore! Inserisci i dati correttamente')
+            // }
         },
     },
 };
@@ -108,6 +127,7 @@ export default {
                                 class="form-check-input"
                                 type="checkbox"
                                 value=""
+                                v-model="accepted"
                                 id="accept"
                             />
                             <label class="form-check-label" for="accept">
